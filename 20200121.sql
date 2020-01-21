@@ -1,2 +1,5 @@
 SELECT *
-FROM prode
+FROM prod;
+
+SELECT prod_id, prod_name
+FROM prod;
