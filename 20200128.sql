@@ -276,8 +276,18 @@ WHERE ename = 'SMITH';
 SELECT SYSDATE
 FROM dual;
 
-SELECT SYSDATE - 28 lastday, SYSDATE -33 lastdat_before5, SYSDATE now, SYSDATE +3 now_before3
+SELECT SYSDATE - 29 lastday, SYSDATE -34 lastdat_before5, SYSDATE now, SYSDATE +3 now_before3
 FROM dual;
 
+SELECT TO_DATE('20191231','yyyymmdd')lastday
+FROM dual;
 
+SELECT TO_DATE('20191231','yyyymmdd')-5 last_before5
+FROM dual;
+
+SELECT SYSDATE
+FROM dual;
+
+SELECT SYSDATE -3
+FROM dual;
 
