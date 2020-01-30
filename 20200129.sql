@@ -285,16 +285,26 @@ SELECT ename,JOB,sal,
         END bonus_sal
 FROM EMP;
 
+
+SELECT a.*, NVL(bonus_sal2,bonus_sal)
+FROM
+    (SELECT ename,JOB,sal,
+            case
+                WHEN job = 'SALESMAN' and sal > 1400 THEN sal *1.05
+                WHEN job = 'SALESMAN' and sal < 1400 THEN sal *1.1
+                ELSE sal
+            END bonus_sal,
+            DECODE(job,'MANAGER',sal* 1.1,
+                     'PRESIDENT',sal * 1.2) bonus_sal2
+     FROM EMP)a;
+
 SELECT ename,JOB,sal,
        case
             WHEN job = 'SALESMAN' and sal > 1400 THEN sal *1.05
             WHEN job = 'SALESMAN' and sal < 1400 THEN sal *1.1
+            WHEN job = 'MANAGER' THEN sal * 1.1
+            WHEN job = 'PRESIDENT' THEN sal * 1.2
             ELSE sal
-        END bonus_sal,
-        DECODE(job,'MANAGER',sal* 1.1,
-                  'PRESIDENT',sal * 1.2, sal) bonus_sal
+        END bonus_sal
 FROM EMP;
-
-
-
 
